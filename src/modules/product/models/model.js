@@ -14,6 +14,9 @@ var ProductSchema = new Schema({
     productcolor: {
         type: String,
     },
+    titledetail: {
+        type: String,
+    },
     detail: {
         type: String,
     },
