@@ -19,7 +19,7 @@ module.exports = function (app) {
             controller.returnData
         )
 
-    app.route('/api/productrabubyid/:productId')
+    app.route('/api/productsrabu/:productId')
         .get(controller.read)
 
     app.param('productId', controller.getByID, controller.getProductById);
