@@ -13,5 +13,14 @@ module.exports = function (app) {
         .put(controller.update)
         .delete(controller.delete);
 
-    app.param('productId', controller.getByID);
+    app.route('/api/productsrabu')
+        .get(
+            controller.findProductRabu,
+            controller.returnData
+        )
+
+    app.route('/api/productrabubyid/:productId')
+        .get(controller.read)
+
+    app.param('productId', controller.getByID, controller.getProductById);
 }

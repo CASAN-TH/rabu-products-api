@@ -5,9 +5,14 @@ var Schema = mongoose.Schema;
 
 
 var ProductSchema = new Schema({
-    name: {
+    color: {
         type: String,
-        required: 'Please fill a Product name',
+    },
+    productcolor: {
+        type: String,
+    },
+    detail: {
+        type: String,
     },
     created: {
         type: Date,
