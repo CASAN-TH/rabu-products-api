@@ -269,7 +269,7 @@ describe('Product CRUD routes tests', function () {
                     }
                     var resp = res.body;
                     request(app)
-                        .get('/api/productrabubyid/' + resp.data._id)
+                        .get('/api/productsrabu/' + resp.data._id)
                         .set('Authorization', 'Bearer ' + token)
                         .expect(200)
                         .end(function (err, res) {
