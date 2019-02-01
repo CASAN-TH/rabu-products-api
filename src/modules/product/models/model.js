@@ -5,6 +5,9 @@ var Schema = mongoose.Schema;
 
 
 var ProductSchema = new Schema({
+    name: {
+        type: String,
+    },
     color: {
         type: String,
     },
