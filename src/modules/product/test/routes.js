@@ -18,6 +18,8 @@ describe('Product CRUD routes tests', function () {
         mockup = {
             color: 'red',
             productcolor: 'red2',
+            name: 'name',
+            titledetail: 'title',
             detail: 'OK'
         };
         credentials = {
