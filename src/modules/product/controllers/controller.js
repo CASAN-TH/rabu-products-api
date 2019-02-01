@@ -1,12 +1,12 @@
 'use strict';
 var mongoose = require('mongoose'),
-    model = require('../models/model'), 
+    model = require('../models/model'),
     Product = mongoose.model('Product'),
     errorHandler = require('../../core/controllers/errors.server.controller'),
     _ = require('lodash');
-    
+
 exports.getList = function (req, res) {
-        Product.find(function (err, datas) {
+    Product.find(function (err, datas) {
         if (err) {
             return res.status(400).send({
                 status: 400,
@@ -22,9 +22,9 @@ exports.getList = function (req, res) {
 };
 
 exports.create = function (req, res) {
-        var newProduct = new Product(req.body);
-        newProduct.createby = req.user;
-        newProduct.save(function (err, data) {
+    var newProduct = new Product(req.body);
+    newProduct.createby = req.user;
+    newProduct.save(function (err, data) {
         if (err) {
             return res.status(400).send({
                 status: 400,
@@ -102,3 +102,46 @@ exports.delete = function (req, res) {
         };
     });
 };
+
+exports.findProductRabu = function (req, res, next) {
+    Product.find(function (err, datas) {
+        if (err) {
+            return res.status(400).send({
+                status: 400,
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            req.result = datas
+            next()
+        };
+    });
+
+}
+
+exports.returnData = function (req, res) {
+    res.jsonp({
+        status: 200,
+        data: req.result
+    });
+}
+
+exports.getProductById = function (req, res, next, id) {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).send({
+            status: 400,
+            message: 'Id is invalid'
+        });
+    }
+
+    Product.findById(id, function (err, data) {
+        if (err) {
+            return res.status(400).send({
+                status: 400,
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            req.data = data ? data : {};
+            next();
+        };
+    });
+}

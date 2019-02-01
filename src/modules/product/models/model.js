@@ -7,15 +7,12 @@ var Schema = mongoose.Schema;
 var ProductSchema = new Schema({
     color: {
         type: String,
-        required: 'Please add Color',
     },
     productcolor: {
         type: String,
-        required: 'Please add productcolor',
     },
     detail: {
         type: String,
-        required: 'Please fill detail',
     },
     created: {
         type: Date,
