@@ -114,7 +114,7 @@ exports.findProductRabu = function (req, res, next) {
             req.result = datas
             next()
         };
-    });
+    }).lean().sort('-created');
 
 }
 
