@@ -232,8 +232,14 @@ describe('Product CRUD routes tests', function () {
             productcolor: 'red2',
             detail: 'ok'
         })
+        var product2 = new Product({
+            color: 'blue',
+            productcolor: 'blue22',
+            detail: 'Nook'
+        })
 
-        product1.save(function (err, pro1) {
+        product2.save(function (err, pro2) {
+            product1.save(function (err, pro1) {
             request(app)
                 .get('/api/productsrabu')
                 // .set('Authorization', 'Bearer ' + token)
@@ -244,9 +250,13 @@ describe('Product CRUD routes tests', function () {
                         return done(err);
                     }
                     var resp = res.body;
+                    // console.log(resp);
                     done()
                 });
         })
+        })
+
+        
 
 
     });
@@ -279,7 +289,7 @@ describe('Product CRUD routes tests', function () {
                                 return done(err);
                             }
                             var resp = res.body;
-                            console.log(resp)
+                            // console.log(resp)
                             assert.equal(resp.status, 200);
                             assert.equal(resp.data.color, 'red');
                             done();
